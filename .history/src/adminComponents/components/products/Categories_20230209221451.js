@@ -49,17 +49,16 @@ const Categories = () => {
 
   const handleAddCategory = async () => {
     if (addInputRef?.current?.value) {
-      const value = addInputRef.current.value;
-      dispatch(setShowInputAddCategory(false));
       try {
         await addDoc(collection(db, "category"), {
-          categoryName: value,
+          categoryName: addInputRef.current.value,
           isDeleted: false,
           isVisiabled: false,
           createdAt: dayjs().unix(),
           updatedAt: null,
           deletedAt: null,
         });
+        addInputRef.current.value = "";
       } catch (error) {
         console.log(error);
       }

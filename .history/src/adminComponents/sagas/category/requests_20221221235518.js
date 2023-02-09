@@ -30,6 +30,7 @@ const requestGetCategory = async () => {
 
 const requestAddCategory = async (data) => {
   const colRef = collection(db, "category");
+  console.log(data);
   try {
     await addDoc(colRef, data);
     return true;
@@ -37,6 +38,17 @@ const requestAddCategory = async (data) => {
     return false;
   }
 };
+
+// const requestDeleteCategory = async ({ id, ...data }) => {
+//   const docRef = doc(db, "category", id);
+//   try {
+//     await updateDoc(docRef, { ...data });
+//     return true;
+//   } catch (error) {
+//     console.log(error);
+//     return false;
+//   }
+// };
 
 const requestUpadateCategory = async ({ id, ...data }) => {
   const docRef = doc(db, "category", id);
@@ -49,4 +61,9 @@ const requestUpadateCategory = async ({ id, ...data }) => {
   }
 };
 
-export { requestGetCategory, requestAddCategory, requestUpadateCategory };
+export {
+  requestGetCategory,
+  requestAddCategory,
+  // requestDeleteCategory,
+  requestUpadateCategory,
+};

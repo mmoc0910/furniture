@@ -1,11 +1,13 @@
 import { put, call } from "redux-saga/effects";
 import {
+  getCategory,
   setCategory,
   setErrMessage,
   setShowInputAddCategory,
 } from "./categorySlice";
 import {
   requestAddCategory,
+  // requestDeleteCategory,
   requestGetCategory,
   requestUpadateCategory,
 } from "./requests";
@@ -32,12 +34,36 @@ function* handlerAddCategory({ payload, type }) {
   }
 }
 
+// function* handleDeleteCategory({ payload }) {
+//   try {
+//     const status = yield call(requestUpadateCategory, payload);
+//     if (status) {
+//       yield put(getCategory());
+//     } else {
+//       yield put(setErrMessage("Xoa khong thanh cong"));
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
 function* handleUpdateCategory({ payload }) {
   try {
-    yield call(requestUpadateCategory, payload);
+    const status = yield call(requestUpadateCategory, payload);
+    console.log(payload);
+    if (status) {
+      yield put(getCategory());
+    } else {
+      yield put(setErrMessage("Update khong thanh cong"));
+    }
   } catch (error) {
     console.log(error);
   }
 }
 
-export { handlerGetCategory, handlerAddCategory, handleUpdateCategory };
+export {
+  handlerGetCategory,
+  handlerAddCategory,
+  // handleDeleteCategory,
+  handleUpdateCategory,
+};

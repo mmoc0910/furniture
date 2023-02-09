@@ -6,13 +6,15 @@ import CategoryItem from "./CategoryItem";
 import { useSelector, useDispatch } from "react-redux";
 import dayjs from "dayjs";
 import {
+  addCategory,
+  getCategory,
   setCategory,
   setShowInputAddCategory,
 } from "../../sagas/category/categorySlice";
 import { v4 as uuidv4 } from "uuid";
 import {
-  addDoc,
   collection,
+  limit,
   onSnapshot,
   orderBy,
   query,
@@ -26,11 +28,11 @@ const Categories = () => {
   const { categories, showInputAddCategory } = useSelector(
     (state) => state.category
   );
-  console.log(categories);
   React.useEffect(() => {
     addInputRef?.current?.focus();
   }, [showInputAddCategory]);
   React.useEffect(() => {
+    // dispatch(getCategory());
     const colRef = collection(db, "category");
     const q = query(
       colRef,
@@ -47,22 +49,18 @@ const Categories = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleAddCategory = async () => {
+  const handleAddCategory = () => {
     if (addInputRef?.current?.value) {
-      const value = addInputRef.current.value;
-      dispatch(setShowInputAddCategory(false));
-      try {
-        await addDoc(collection(db, "category"), {
-          categoryName: value,
+      dispatch(
+        addCategory({
+          categoryName: addInputRef.current.value,
           isDeleted: false,
           isVisiabled: false,
           createdAt: dayjs().unix(),
           updatedAt: null,
           deletedAt: null,
-        });
-      } catch (error) {
-        console.log(error);
-      }
+        })
+      );
     } else {
       dispatch(setShowInputAddCategory(false));
     }

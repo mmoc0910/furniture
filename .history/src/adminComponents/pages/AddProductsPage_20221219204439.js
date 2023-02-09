@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addProduct, resetProduct } from "../sagas/products/productSlice";
+import { addProduct } from "../sagas/products/productSlice";
 import ProductBox from "../components/products/ProductBox";
 import Heading from "../components/Heading";
 import { useNavigate } from "react-router-dom";
@@ -72,7 +72,6 @@ const AddProductsPage = () => {
         dispatch(addProduct({ ...product, images }));
         setLoading(false);
         dispatch(setPriviewImages([]));
-        dispatch(resetProduct());
         navigate("/admin/products");
       } catch (err) {
         err?.inner[0]?.message &&

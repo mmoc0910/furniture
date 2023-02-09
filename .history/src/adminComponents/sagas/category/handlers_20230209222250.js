@@ -6,6 +6,7 @@ import {
 } from "./categorySlice";
 import {
   requestAddCategory,
+  // requestDeleteCategory,
   requestGetCategory,
   requestUpadateCategory,
 } from "./requests";
@@ -24,6 +25,7 @@ function* handlerAddCategory({ payload, type }) {
     const status = yield call(requestAddCategory, payload);
     if (status) {
       yield put(setShowInputAddCategory(false));
+      // yield put(getCategory());
     } else {
       yield put(setErrMessage("Them khong thanh cong"));
     }
@@ -31,6 +33,19 @@ function* handlerAddCategory({ payload, type }) {
     console.log(error);
   }
 }
+
+// function* handleDeleteCategory({ payload }) {
+//   try {
+//     const status = yield call(requestUpadateCategory, payload);
+//     if (status) {
+//       yield put(getCategory());
+//     } else {
+//       yield put(setErrMessage("Xoa khong thanh cong"));
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 function* handleUpdateCategory({ payload }) {
   try {
