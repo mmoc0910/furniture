@@ -22,7 +22,7 @@ const DashboardPage = () => {
   const [orders, setOrders] = React.useState([]);
   React.useEffect(() => {
     const colRef = collection(db, "orders");
-    const q = query(colRef, orderBy("createdAt", "asc"));
+    const q = query(colRef, orderBy("createdAt", "desc"));
     onSnapshot(q, (snapshot) => {
       let data = [];
       snapshot.docs.forEach((doc, index) => {
