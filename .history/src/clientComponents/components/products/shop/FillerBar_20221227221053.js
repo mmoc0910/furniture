@@ -1,0 +1,34 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategory } from "../../../../adminComponents/sagas/category/categorySlice";
+import { Accordion } from "../../accordions";
+import FillterItem from "./FillterItem";
+
+const FillerBar = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.category);
+  React.useEffect(() => {
+    dispatch(getCategory());
+  }, [dispatch]);
+  return (
+    <div className="mt-11">
+      <FillterItem
+        accrordionHeading={"Danh mục sản phẩm"}
+        accordionOption={categories}
+      >
+        <div className="pt-4 text-[#b7b7b7] space-y-3 font-semibold">
+          {categories &&
+            categories.map((item) => (
+              <Accordion.Option key={item.id}>
+                {item.categoryName}
+              </Accordion.Option>
+            ))}
+        </div>
+      </FillterItem>
+      {/* <FillterItem></FillterItem> */}
+      {/* <FillterItem></FillterItem> */}
+    </div>
+  );
+};
+
+export default FillerBar;
