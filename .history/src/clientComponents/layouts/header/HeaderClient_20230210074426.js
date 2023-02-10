@@ -83,7 +83,7 @@ const HeaderClient = () => {
     <>
       {auth.currentUser && (
         <div className="fixed z-50 w-16 h-16 right-10 bottom-10">
-          {state && <Chat onClick={() => setState(false)} />}
+          <Chat />
           <div
             className="w-full h-full bg-[#4d7a94] rounded-full text-white flex justify-center items-center cursor-pointer"
             onClick={() => setState((state) => !state)}
@@ -297,12 +297,12 @@ const Chat = ({ onClick }) => {
             className="max-h-[90%%] h-full overflow-scroll scroll-hidden"
             ref={scrollRef}
           >
-            {messages?.length === 0 && (
+            {messages.length === 0 && (
               <div className="flex items-center justify-center w-full h-full font-bold">
                 ...
               </div>
             )}
-            {messages?.length > 0 &&
+            {messages.length > 0 &&
               messages.map((message) => (
                 <Message message={message} key={uuidv4()} />
               ))}

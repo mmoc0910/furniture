@@ -83,7 +83,7 @@ const HeaderClient = () => {
     <>
       {auth.currentUser && (
         <div className="fixed z-50 w-16 h-16 right-10 bottom-10">
-          {state && <Chat onClick={() => setState(false)} />}
+          <Chat />
           <div
             className="w-full h-full bg-[#4d7a94] rounded-full text-white flex justify-center items-center cursor-pointer"
             onClick={() => setState((state) => !state)}
@@ -193,7 +193,8 @@ const HeaderClient = () => {
   );
 };
 
-const Chat = ({ onClick }) => {
+const Chat = () => {
+  const [state, setState] = React.useState(false);
   const [messages, setMessages] = React.useState([]);
   const [images, setImages] = React.useState([]);
   const [files, setFiles] = React.useState([]);
@@ -202,7 +203,7 @@ const Chat = ({ onClick }) => {
   const scrollRef = React.useRef(null);
   React.useEffect(() => {
     scrollRef.current.scroll(0, scrollRef.current.scrollHeight);
-  }, [messages]);
+  }, [messages, state]);
   React.useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -266,7 +267,9 @@ const Chat = ({ onClick }) => {
   return (
     <>
       <div
-        className={`fixed md:absolute bg-white shadow-chat rounded-lg bottom-0 right-0 md:bottom-8 md:right-20 w-screen h-screen md:w-[370px] md:h-[500px] `}
+        className={`fixed md:absolute bg-white shadow-chat rounded-lg bottom-0 right-0 md:bottom-8 md:right-20 w-screen h-screen md:w-[370px] md:h-[500px] ${
+          state ? "block" : "hidden"
+        }`}
       >
         <div className="flex flex-col justify-between w-full h-full px-5 overflow-hidden">
           <div className="flex items-center w-full py-3">
@@ -276,7 +279,7 @@ const Chat = ({ onClick }) => {
               className="rounded-full w-9 h-9"
             />
             <p className="text-lg font-bold text-[#32776b] ml-2">Furniture</p>
-            <span className="ml-auto" onClick={() => onClick()}>
+            <span className="ml-auto" onClick={() => setState(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -297,12 +300,12 @@ const Chat = ({ onClick }) => {
             className="max-h-[90%%] h-full overflow-scroll scroll-hidden"
             ref={scrollRef}
           >
-            {messages?.length === 0 && (
+            {messages.length === 0 && (
               <div className="flex items-center justify-center w-full h-full font-bold">
                 ...
               </div>
             )}
-            {messages?.length > 0 &&
+            {messages.length > 0 &&
               messages.map((message) => (
                 <Message message={message} key={uuidv4()} />
               ))}

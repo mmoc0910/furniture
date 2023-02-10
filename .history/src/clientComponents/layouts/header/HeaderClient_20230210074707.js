@@ -297,12 +297,12 @@ const Chat = ({ onClick }) => {
             className="max-h-[90%%] h-full overflow-scroll scroll-hidden"
             ref={scrollRef}
           >
-            {messages?.length === 0 && (
+            {messages.length === 0 && (
               <div className="flex items-center justify-center w-full h-full font-bold">
                 ...
               </div>
             )}
-            {messages?.length > 0 &&
+            {messages.length > 0 &&
               messages.map((message) => (
                 <Message message={message} key={uuidv4()} />
               ))}
