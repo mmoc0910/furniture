@@ -92,20 +92,20 @@ function App() {
           </Route>
 
           <Route path="/" element={<RegisterLayout></RegisterLayout>}>
-            {!state && (
+            {!user && (
               <>
+                {" "}
                 <Route path="/signin" element={<SignIn></SignIn>}></Route>
                 <Route path="/signup" element={<SignUp></SignUp>}></Route>
               </>
             )}
-            {!user?.isAdmin || !user ? (
-              <Route
-                path="/signinAdmin"
-                element={<SignInAdmin></SignInAdmin>}
-              ></Route>
-            ) : (
-              <></>
-            )}
+            {!user.isAdmin ||
+              (!user && (
+                <Route
+                  path="/signinAdmin"
+                  element={<SignInAdmin></SignInAdmin>}
+                ></Route>
+              ))}
           </Route>
 
           <Route path="/admin" element={<LayoutAdmin></LayoutAdmin>}>

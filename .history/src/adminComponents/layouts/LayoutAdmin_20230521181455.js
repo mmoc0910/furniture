@@ -73,16 +73,9 @@ const LayoutAdmin = () => {
   const navigate = useNavigate();
   React.useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
+      console.log(user);
       if (!user) {
         navigate("/signinAdmin");
-      } else {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -25,7 +25,7 @@ import { auth, db } from "../../firebase/firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { dateFormat } from "../../helpers/function";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 const url = "https://api.cloudinary.com/v1_1/ds32vmzcc/image/upload";
 const menus = [
   {
@@ -75,14 +75,6 @@ const LayoutAdmin = () => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         navigate("/signinAdmin");
-      } else {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -123,13 +115,7 @@ const LayoutAdmin = () => {
                     <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
                   </span>
                 </p>
-                <p
-                  className="text-[#32776b] decoration-[#32776b] underline cursor-pointer font-semibold"
-                  onClick={async () => {
-                    await signOut(auth);
-                    navigate("/signinAdmin");
-                  }}
-                >
+                <p className="text-[#8e8d8c] decoration-[#8e8d8c] underline cursor-pointer">
                   Logout
                 </p>
               </div>

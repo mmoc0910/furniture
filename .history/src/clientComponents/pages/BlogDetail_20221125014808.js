@@ -52,39 +52,18 @@ const BlogDetail = () => {
           </div>
         </div>
         <div className="h-[600px] pb-10">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi
-            at dolore consectetur odio quis alias quaerat dolorem omnis aliquam!
-            Voluptates facere rerum voluptatibus libero velit, alias magnam,
-            nemo unde temporibus fugiat architecto. Magni ab nihil cum facilis
-            veritatis doloribus amet, voluptatibus, quod voluptas sequi
-            dignissimos, dolor minima tenetur quis optio! Laboriosam ab eveniet
-            modi repellat doloremque ullam optio reprehenderit laudantium
-            voluptate explicabo harum praesentium omnis impedit placeat, facere
-            aliquid sit nam eius accusamus minima consequatur voluptatum
-            deserunt ratione? Architecto tempore neque ad doloribus soluta
-            suscipit mollitia cumque optio, est cupiditate laudantium,
-            reiciendis quaerat quidem odio debitis aut sed impedit delectus?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aut
-            sapiente molestiae pariatur soluta. Excepturi, possimus dolor illo
-            eum porro voluptate. Similique explicabo ratione fuga inventore.
-            Odit saepe iusto aperiam quidem, expedita velit numquam asperiores
-            hic temporibus voluptas, totam voluptates aliquam cupiditate
-            laboriosam omnis voluptate sint debitis molestiae fugiat nostrum
-            magnam, corrupti itaque excepturi. Ad voluptates illum incidunt
-            voluptatem voluptas laborum, in alias officia dolore dolores
-            excepturi porro ducimus ratione magni ex repellendus accusantium
-            illo aperiam. Sequi fugiat assumenda deserunt, quod quos eius vitae
-            consequuntur nobis autem velit suscipit? In quam culpa veritatis,
-            laboriosam velit nam omnis ut voluptates nostrum iure ipsam quae
-            animi sed neque qui aliquam obcaecati quas unde alias laborum. Ipsa
-            nobis illo iste laboriosam dolore qui molestiae quos minus magnam.
-            Fuga animi ex ipsa, itaque fugit ut in, quisquam laboriosam nesciunt
-            a quo placeat assumenda commodi vitae officia praesentium sapiente
-            quaerat temporibus veniam similique iste consequatur.
-          </p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea possimus
+          recusandae quas, alias nisi vitae? Nesciunt, dolores fuga. Et quis
+          earum aliquam quas atque eos quisquam similique repellendus quaerat
+          minus. Ut, velit. Quam obcaecati voluptate, itaque nemo eligendi eaque
+          vel sunt totam delectus aut expedita accusantium fugit asperiores
+          dolor! Voluptate fugiat neque id aliquid voluptatibus repellendus
+          recusandae voluptas, deleniti ut provident delectus blanditiis eos
+          veniam nobis laudantium corrupti ex sunt reprehenderit, incidunt,
+          velit illo. Nisi illo minus magni asperiores ipsum autem aperiam
+          cumque, dolor facere dicta deserunt cupiditate inventore vel? Quidem
+          voluptate repellat magni sunt et cupiditate reiciendis, pariatur
+          eligendi.
         </div>
         <div className="flex items-center justify-between mb-32">
           <div className="flex items-center gap-2 cursor-pointer">

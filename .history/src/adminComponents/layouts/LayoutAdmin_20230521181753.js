@@ -79,9 +79,8 @@ const LayoutAdmin = () => {
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
+          console.log(docSnap.data());
+          if (docSnap.data().isAdmin) console.log("ok");
         }
       }
     });

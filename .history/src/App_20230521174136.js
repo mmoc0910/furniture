@@ -90,24 +90,18 @@ function App() {
 
             <Route path="/search/:slug" element={<Search></Search>}></Route>
           </Route>
-
-          <Route path="/" element={<RegisterLayout></RegisterLayout>}>
-            {!state && (
-              <>
-                <Route path="/signin" element={<SignIn></SignIn>}></Route>
-                <Route path="/signup" element={<SignUp></SignUp>}></Route>
-              </>
-            )}
-            {!user?.isAdmin || !user ? (
+          {!state && (
+            <Route path="/" element={<RegisterLayout></RegisterLayout>}>
+              <Route path="/signin" element={<SignIn></SignIn>}></Route>
+              <Route path="/signup" element={<SignUp></SignUp>}></Route>
               <Route
                 path="/signinAdmin"
                 element={<SignInAdmin></SignInAdmin>}
               ></Route>
-            ) : (
-              <></>
-            )}
-          </Route>
+            </Route>
+          )}
 
+          {/* {user.isAdmin && ( */}
           <Route path="/admin" element={<LayoutAdmin></LayoutAdmin>}>
             <Route
               path="/admin"
@@ -134,6 +128,7 @@ function App() {
               element={<DiscountPage></DiscountPage>}
             ></Route>
           </Route>
+          {/* )} */}
 
           <Route
             path="*"

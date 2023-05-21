@@ -25,7 +25,7 @@ import { auth, db } from "../../firebase/firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { dateFormat } from "../../helpers/function";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 const url = "https://api.cloudinary.com/v1_1/ds32vmzcc/image/upload";
 const menus = [
   {
@@ -75,14 +75,6 @@ const LayoutAdmin = () => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         navigate("/signinAdmin");
-      } else {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,29 +102,24 @@ const LayoutAdmin = () => {
         <div className="w-full max-w-full pt-10 pb-20 overflow-y-auto pr-14 scroll-smooth">
           <div className="flex items-center justify-between pb-8">
             <Logo color="#32776b" className="text-5xl font-extrabold"></Logo>
-            <div className="flex items-center gap-2">
-              <img
-                src="https://images.unsplash.com/photo-1491926626787-62db157af940?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                className="object-cover rounded-lg w-11 h-11"
-                alt=""
-              />
-              <div className="">
-                <p className="flex items-center gap-1 font-bold">
-                  Mr.VinhPham
-                  <span>
-                    <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
-                  </span>
-                </p>
-                <p
-                  className="text-[#32776b] decoration-[#32776b] underline cursor-pointer font-semibold"
-                  onClick={async () => {
-                    await signOut(auth);
-                    navigate("/signinAdmin");
-                  }}
-                >
-                  Logout
-                </p>
+            <div className="relative">
+              <div className="flex items-center gap-2">
+                <img
+                  src="https://images.unsplash.com/photo-1491926626787-62db157af940?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                  className="object-cover rounded-lg w-11 h-11"
+                  alt=""
+                />
+                <div className="">
+                  <p className="flex items-center gap-1 font-bold">
+                    Mr.VinhPham
+                    <span>
+                      <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
+                    </span>
+                  </p>
+                  <p className="text-[#8e8d8c]">Owner</p>
+                </div>
               </div>
+              <div className="absolute right-0 w-full h-10 bg-black -top-full"></div>
             </div>
           </div>
           {<Outlet></Outlet>}

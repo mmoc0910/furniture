@@ -25,7 +25,8 @@ import { auth, db } from "../../firebase/firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { dateFormat } from "../../helpers/function";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import RequireAuthAdmin from "../pages/RequireAuthAdmin";
 const url = "https://api.cloudinary.com/v1_1/ds32vmzcc/image/upload";
 const menus = [
   {
@@ -75,20 +76,12 @@ const LayoutAdmin = () => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         navigate("/signinAdmin");
-      } else {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <>
+    <RequireAuthAdmin>
       <div className="flex w-screen h-screen select-none gap-14 flex-nowrap">
         <div className="flex flex-col items-center justify-between px-5 py-10">
           <div className="flex flex-col items-center gap-5">
@@ -118,27 +111,19 @@ const LayoutAdmin = () => {
               />
               <div className="">
                 <p className="flex items-center gap-1 font-bold">
-                  Mr.VinhPham
+                  Mr.DianaVinhPham
                   <span>
                     <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
                   </span>
                 </p>
-                <p
-                  className="text-[#32776b] decoration-[#32776b] underline cursor-pointer font-semibold"
-                  onClick={async () => {
-                    await signOut(auth);
-                    navigate("/signinAdmin");
-                  }}
-                >
-                  Logout
-                </p>
+                <p className="text-[#8e8d8c]">Owner</p>
               </div>
             </div>
           </div>
           {<Outlet></Outlet>}
         </div>
       </div>
-    </>
+    </RequireAuthAdmin>
   );
 };
 

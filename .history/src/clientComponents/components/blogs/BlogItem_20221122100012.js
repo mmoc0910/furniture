@@ -35,7 +35,6 @@ const BlogItem = ({ style }) => {
           What Curling Irons Are The Best Ones
         </p>
         <Link
-          to={"/blog/vjdbvjh"}
           className={`relative py-1 uppercase text-[13px] tracking-[4px] font-bold after:absolute after:h-[2px] after:bottom-0 after:left-0 after:transition-all after:duration-300 after:ease-linear ${
             show
               ? "after:w-1/2 after:bg-[#e53637]"

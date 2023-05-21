@@ -66,25 +66,6 @@ const BlogDetail = () => {
             suscipit mollitia cumque optio, est cupiditate laudantium,
             reiciendis quaerat quidem odio debitis aut sed impedit delectus?
           </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aut
-            sapiente molestiae pariatur soluta. Excepturi, possimus dolor illo
-            eum porro voluptate. Similique explicabo ratione fuga inventore.
-            Odit saepe iusto aperiam quidem, expedita velit numquam asperiores
-            hic temporibus voluptas, totam voluptates aliquam cupiditate
-            laboriosam omnis voluptate sint debitis molestiae fugiat nostrum
-            magnam, corrupti itaque excepturi. Ad voluptates illum incidunt
-            voluptatem voluptas laborum, in alias officia dolore dolores
-            excepturi porro ducimus ratione magni ex repellendus accusantium
-            illo aperiam. Sequi fugiat assumenda deserunt, quod quos eius vitae
-            consequuntur nobis autem velit suscipit? In quam culpa veritatis,
-            laboriosam velit nam omnis ut voluptates nostrum iure ipsam quae
-            animi sed neque qui aliquam obcaecati quas unde alias laborum. Ipsa
-            nobis illo iste laboriosam dolore qui molestiae quos minus magnam.
-            Fuga animi ex ipsa, itaque fugit ut in, quisquam laboriosam nesciunt
-            a quo placeat assumenda commodi vitae officia praesentium sapiente
-            quaerat temporibus veniam similique iste consequatur.
-          </p>
         </div>
         <div className="flex items-center justify-between mb-32">
           <div className="flex items-center gap-2 cursor-pointer">

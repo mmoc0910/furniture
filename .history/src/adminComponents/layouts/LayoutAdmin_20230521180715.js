@@ -25,7 +25,7 @@ import { auth, db } from "../../firebase/firebase-config";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { dateFormat } from "../../helpers/function";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 const url = "https://api.cloudinary.com/v1_1/ds32vmzcc/image/upload";
 const menus = [
   {
@@ -75,14 +75,6 @@ const LayoutAdmin = () => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         navigate("/signinAdmin");
-      } else {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          if (!docSnap.data().isAdmin) {
-            navigate("/signinAdmin");
-          }
-        }
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,22 +108,16 @@ const LayoutAdmin = () => {
                 className="object-cover rounded-lg w-11 h-11"
                 alt=""
               />
-              <div className="">
-                <p className="flex items-center gap-1 font-bold">
-                  Mr.VinhPham
-                  <span>
-                    <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
-                  </span>
-                </p>
-                <p
-                  className="text-[#32776b] decoration-[#32776b] underline cursor-pointer font-semibold"
-                  onClick={async () => {
-                    await signOut(auth);
-                    navigate("/signinAdmin");
-                  }}
-                >
-                  Logout
-                </p>
+              <div className="relative">
+                <div className="">
+                  <p className="flex items-center gap-2 font-bold">
+                    Mr.VinhPham
+                    <span>
+                      <AiFillCaretDown color="#8e8d8c"></AiFillCaretDown>
+                    </span>
+                  </p>
+                  <p className="text-[#8e8d8c]">Owner</p>
+                </div>
               </div>
             </div>
           </div>
